@@ -1,1 +1,26 @@
-{"name":"pi-git","version":"1.0.0","description":"Pi extension","keywords":["pi-package","pi-extension"],"license":"MIT","repository":"mohammadraufzahed/pi-git","pi":{"extensions":["./extensions/index.ts"]},"peerDependencies":{"@earendil-works/pi-coding-agent":"*","typebox":"*"}}
+{
+  "name": "pi-git",
+  "version": "1.0.0",
+  "description": "Pi extension",
+  "keywords": [
+    "pi-package",
+    "pi-extension"
+  ],
+  "license": "MIT",
+  "repository": "mohammadraufzahed/pi-git",
+  "pi": {
+    "extensions": [
+      "./extensions/index.ts"
+    ]
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*",
+    "typebox": "*"
+  },
+  "devDependencies": {
+    "@earendil-works/pi-coding-agent": "*",
+    "@types/node": "^22",
+    "typebox": "*",
+    "typescript": "^5.9"
+  }
+}
