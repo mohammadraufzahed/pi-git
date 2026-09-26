@@ -43,7 +43,7 @@ export default function piGit(pi: ExtensionAPI) {
 				["log", `-${p.n ?? 15}`, ...(fmt === "medium" ? [] : fmt.split(" "))],
 				ctx.cwd,
 			);
-			return { content: [{ type: "text" as const, text: out }] };
+			return { content: [{ type: "text" as const, text: out }], details: null };
 		},
 	});
 
@@ -60,7 +60,7 @@ export default function piGit(pi: ExtensionAPI) {
 			const args = ["blame", "--date=short"];
 			if (p.start && p.end) args.push("-L", `${p.start},${p.end}`);
 			args.push(p.path);
-			return { content: [{ type: "text" as const, text: await run(args, ctx.cwd) }] };
+			return { content: [{ type: "text" as const, text: await run(args, ctx.cwd) }], details: null };
 		},
 	});
 
@@ -76,7 +76,7 @@ export default function piGit(pi: ExtensionAPI) {
 			const args = ["diff"];
 			if (p.stat) args.push("--stat");
 			if (p.target) args.push(p.target);
-			return { content: [{ type: "text" as const, text: await run(args, ctx.cwd) }] };
+			return { content: [{ type: "text" as const, text: await run(args, ctx.cwd) }], details: null };
 		},
 	});
 
@@ -86,7 +86,7 @@ export default function piGit(pi: ExtensionAPI) {
 		description: "Worktree state — modified, staged, untracked.",
 		parameters: Type.Object({}),
 		async execute(_id, _p, _s, _u, ctx: { cwd: string }) {
-			return { content: [{ type: "text" as const, text: await run(["status", "-sb"], ctx.cwd) }] };
+			return { content: [{ type: "text" as const, text: await run(["status", "-sb"], ctx.cwd) }], details: null };
 		},
 	});
 
@@ -101,6 +101,7 @@ export default function piGit(pi: ExtensionAPI) {
 					type: "text" as const,
 					text: await run(["branch", "-vv", "--sort=-committerdate"], ctx.cwd),
 				}],
+				details: null,
 			};
 		},
 	});
@@ -122,6 +123,7 @@ export default function piGit(pi: ExtensionAPI) {
 						ctx.cwd,
 					),
 				}],
+				details: null,
 			};
 		},
 	});
